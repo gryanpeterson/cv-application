@@ -1,8 +1,12 @@
 import { useState } from 'react'
-import './App.css'
+import PersonalDetails from './components/PersonalDetails'
 
 function App() {
-  
+
+  return (
+    <PersonalDetails />
+  )
+
 }
 
 export default App
