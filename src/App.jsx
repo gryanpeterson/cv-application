@@ -65,30 +65,34 @@ function App() {
 
 
   return (
-    <>
-      <PersonalDetailsForm 
-      fullName={onChangeFullName}
-      email={onChangeEmail}
-      phoneNumber={onChangePhoneNumber}
-      address={onChangeAddress}
-      />
-      <ExperienceForm 
-      experience={experience}
-      addExperience={addExperience}
-      />
-      <EducationForm addEducation={addEducation}
-      />
+    <div className='flex flex-row'>
+      <div className='w-1/2'>
+        <PersonalDetailsForm 
+        fullName={onChangeFullName}
+        email={onChangeEmail}
+        phoneNumber={onChangePhoneNumber}
+        address={onChangeAddress}
+        />
+        <ExperienceForm 
+        experience={experience}
+        addExperience={addExperience}
+        />
+        <EducationForm addEducation={addEducation}
+        />
+      </div>
 
-      <PersonalDetailsSection 
-      fullName={fullName}
-      email={email}
-      phoneNumber={phoneNumber}
-      address={address}
-      />
-      <ExperienceSection experience={experience} />
-      
-      <EducationSection education={education}/>
-    </>
+      <div className='w-1/2'>
+        <PersonalDetailsSection 
+        fullName={fullName}
+        email={email}
+        phoneNumber={phoneNumber}
+        address={address}
+        />
+        <ExperienceSection experience={experience} />
+        
+        <EducationSection education={education}/>
+      </div>
+    </div>
   )
 
 }

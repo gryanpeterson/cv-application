@@ -1,7 +1,7 @@
 function EducationSection({education}) {
     return (
         <section className="education-section">
-            <h1>Education</h1>
+            <h1 className="text-xl font-bold">Education Section</h1>
             {education.map(educationObject => {
                 return (
                     <div className="education-container" key={educationObject.id}>
