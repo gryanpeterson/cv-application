@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { v4 as uuidv4 } from 'uuid';
 import PersonalDetailsForm from './components/PersonalDetailsForm'
 import PersonalDetailsSection from './components/PersonalDetailsSection'
 import ExperienceForm from './components/ExperienceForm';
@@ -35,25 +36,29 @@ function App() {
 
   const addExperience = (e) => {
     e.preventDefault();
+    const id = uuidv4();
     const position = e.target[0].value;
     const company = e.target[1].value;
     const startDate = e.target[2].value;
     const endDate = e.target[3].value;
     const description = e.target[4].value;
 
-    const newExperience = {position, company, startDate, endDate, description};
+    const newExperience = {id, position, company, startDate, endDate, description};
     setExperience([...experience, newExperience])
+
+    
   }
 
   const addEducation = (e) => {
     e.preventDefault();
+    const id = uuidv4();
     const school = e.target[0].value;
     const degree = e.target[1].value;
     const startDate = e.target[2].value;
     const endDate = e.target[3].value;
     const location = e.target[4].value;
 
-    const newEducation = {school, degree, startDate, endDate, location};
+    const newEducation = {id, school, degree, startDate, endDate, location};
     setEducation([...education, newEducation]);
   }
 
@@ -68,6 +73,7 @@ function App() {
       address={onChangeAddress}
       />
       <ExperienceForm 
+      experience={experience}
       addExperience={addExperience}
       />
       <EducationForm addEducation={addEducation}

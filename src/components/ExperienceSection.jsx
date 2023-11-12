@@ -4,7 +4,7 @@ function ExperienceSection({experience}) {
             <h1>Experience</h1>
             {experience.map(experienceObject => {
                 return (
-                    <div className="experience-container">
+                    <div className="experience-container" key={experienceObject.id}>
                         <div className="position">{experienceObject.position}</div>
                         <div className="company">{experienceObject.company}</div>
                         <div className="start-date">{experienceObject.startDate}</div>
