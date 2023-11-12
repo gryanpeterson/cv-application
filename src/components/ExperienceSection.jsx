@@ -1,14 +1,17 @@
-function ExperienceSection({position, company, startDate, endDate, description}) {
+function ExperienceSection({experience}) {
     return (
         <section className="experience-section">
-            <h1>Experience</h1>
-            <div className="experience-container">
-                <div className="position">{position}</div>
-                <div className="company">{company}</div>
-                <div className="start-date">{startDate}</div>
-                <div className="end-date">{endDate}</div>
-                <div className="description">{description}</div>
-            </div>
+            {experience.map(object => {
+                return (
+                    <div className="experience-container">
+                        <div className="position">{object.position}</div>
+                        <div className="company">{object.company}</div>
+                        <div className="start-date">{object.startDate}</div>
+                        <div className="end-date">{object.endDate}</div>
+                        <div className="description">{object.description}</div>
+                    </div>
+                )
+            })}
         </section>
     )
 }

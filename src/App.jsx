@@ -61,10 +61,7 @@ function App() {
       phoneNumber={phoneNumber}
       address={address}
       />
-      <ExperienceSection 
-      
-      
-      />
+      <ExperienceSection experience={experience} />
     </>
   )
 
