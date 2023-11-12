@@ -1,6 +1,7 @@
 function PersonalDetailsSection({fullName, email, phoneNumber, address}) {
     return (
-        <div className="personalDetailsSection">
+        <section className="personalDetailsSection">
+            <h1>Personal</h1>
             <div className="fullName">
                 <p>Name: {fullName}</p>
 
@@ -17,7 +18,7 @@ function PersonalDetailsSection({fullName, email, phoneNumber, address}) {
                 <p>Address: {address}</p>
 
             </div>
-        </div>
+        </section>
 
     )
 

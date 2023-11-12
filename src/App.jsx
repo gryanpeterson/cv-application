@@ -3,6 +3,9 @@ import PersonalDetailsForm from './components/PersonalDetailsForm'
 import PersonalDetailsSection from './components/PersonalDetailsSection'
 import ExperienceForm from './components/ExperienceForm';
 import ExperienceSection from './components/ExperienceSection';
+import EducationForm from './components/EducationForm';
+import EducationSection from './components/EducationSection';
+
 
 function App() {
 
@@ -11,6 +14,7 @@ function App() {
   const [phoneNumber, setPhoneNumber] = useState('');
   const [address, setAddress] = useState('');
   const [experience, setExperience] = useState([]);
+  const [education, setEducation] = useState([]);
 
 
   const onChangeFullName = (e) => {
@@ -39,7 +43,18 @@ function App() {
 
     const newExperience = {position, company, startDate, endDate, description};
     setExperience([...experience, newExperience])
-    
+  }
+
+  const addEducation = (e) => {
+    e.preventDefault();
+    const school = e.target[0].value;
+    const degree = e.target[1].value;
+    const startDate = e.target[2].value;
+    const endDate = e.target[3].value;
+    const location = e.target[4].value;
+
+    const newEducation = {school, degree, startDate, endDate, location};
+    setEducation([...education, newEducation]);
   }
 
 
@@ -55,6 +70,9 @@ function App() {
       <ExperienceForm 
       addExperience={addExperience}
       />
+      <EducationForm addEducation={addEducation}
+      />
+
       <PersonalDetailsSection 
       fullName={fullName}
       email={email}
@@ -62,6 +80,8 @@ function App() {
       address={address}
       />
       <ExperienceSection experience={experience} />
+      
+      <EducationSection education={education}/>
     </>
   )
 

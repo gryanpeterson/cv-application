@@ -1,4 +1,4 @@
-function ExperienceForm({experience, addExperience}) {
+function ExperienceForm({addExperience}) {
     return (
         <form onSubmit={addExperience}>
             <h1>Experience</h1>
