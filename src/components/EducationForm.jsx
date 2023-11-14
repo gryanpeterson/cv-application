@@ -7,7 +7,23 @@ function EducationForm({ addEducation, deleteEducation, education }) {
             <div className="education-title">
               {educationObject.school} - {educationObject.degree}
             </div>
-            <button className="p-1 bg-gray-300 rounded-md">Edit</button>
+            <button
+              className="p-1 bg-gray-300 rounded-md"
+              onClick={(e) => {
+                e.currentTarget.parentNode.nextSibling[0].value =
+                  educationObject.school;
+                e.currentTarget.parentNode.nextSibling[1].value =
+                  educationObject.degree;
+                e.currentTarget.parentNode.nextSibling[2].value =
+                  educationObject.startDate;
+                e.currentTarget.parentNode.nextSibling[3].value =
+                  educationObject.endDate;
+                e.currentTarget.parentNode.nextSibling[4].value =
+                  educationObject.location;
+                deleteEducation(educationObject.id);
+              }}>
+              Edit
+            </button>
             <button
               className="p-1 bg-gray-300 rounded-md"
               onClick={() => deleteEducation(educationObject.id)}>

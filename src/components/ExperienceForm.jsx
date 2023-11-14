@@ -10,7 +10,23 @@ function ExperienceForm({ addExperience, experience, deleteExperience }) {
               <div className="experience-title">
                 {experienceObject.company} - {experienceObject.position}
               </div>
-              <button className="p-1 bg-gray-300 rounded-md">Edit</button>
+              <button
+                className="p-1 bg-gray-300 rounded-md"
+                onClick={(e) => {
+                  e.currentTarget.parentNode.nextSibling[0].value =
+                    experienceObject.position;
+                  e.currentTarget.parentNode.nextSibling[1].value =
+                    experienceObject.company;
+                  e.currentTarget.parentNode.nextSibling[2].value =
+                    experienceObject.startDate;
+                  e.currentTarget.parentNode.nextSibling[3].value =
+                    experienceObject.endDate;
+                  e.currentTarget.parentNode.nextSibling[4].value =
+                    experienceObject.description;
+                  deleteExperience(experienceObject.id);
+                }}>
+                Edit
+              </button>
               <button
                 className="p-1 bg-gray-300 rounded-md"
                 onClick={() => deleteExperience(experienceObject.id)}>
