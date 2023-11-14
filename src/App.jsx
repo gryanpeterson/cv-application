@@ -76,6 +76,12 @@ function App() {
     clearForm(e);
   };
 
+  const deleteEducation = (id) => {
+    setEducation((currentEducation) => {
+      return currentEducation.filter((edu) => edu.id !== id);
+    });
+  };
+
   return (
     <div className="flex flex-row">
       <div className="w-1/2">
@@ -90,7 +96,11 @@ function App() {
           addExperience={addExperience}
           deleteExperience={deleteExperience}
         />
-        <EducationForm addEducation={addEducation} />
+        <EducationForm
+          education={education}
+          addEducation={addEducation}
+          deleteEducation={deleteEducation}
+        />
       </div>
 
       <div className="w-1/2">
