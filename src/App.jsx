@@ -44,13 +44,15 @@ function App() {
     const company = e.target[1].value;
     const startDate = e.target[2].value;
     const endDate = e.target[3].value;
-    const description = e.target[4].value;
+    const location = e.target[4].value;
+    const description = e.target[5].value;
     const newExperience = {
       id,
       position,
       company,
       startDate,
       endDate,
+      location,
       description,
     };
     setExperience([...experience, newExperience]);
@@ -83,8 +85,8 @@ function App() {
   };
 
   return (
-    <div className="flex flex-row h-screen bg-gray-200">
-      <div className="grid w-1/2 grid-cols-2 gap-x-5 gap-y-5 grid-rows 3">
+    <div className="flex flex-row bg-gray-200 max-w-screen">
+      <div className="flex flex-col items-center px-5 bg-cyan-800">
         <PersonalDetailsForm
           fullName={onChangeFullName}
           email={onChangeEmail}
@@ -103,8 +105,8 @@ function App() {
         />
       </div>
 
-      <div className="flex flex-col items-center justify-center w-1/2 align-center">
-        <div className="w-3/4 shadow-2xl h-3/4 bg-slate-50">
+      <div className="flex flex-col items-center w-full mt-10 align-center">
+        <div className="w-3/4 shadow-2xl h-1/2 bg-slate-50">
           <PersonalDetailsSection
             fullName={fullName}
             email={email}

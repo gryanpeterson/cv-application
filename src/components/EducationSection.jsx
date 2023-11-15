@@ -1,16 +1,18 @@
 function EducationSection({ education }) {
   return (
-    <section className="education-section">
-      <h1 className="text-xl font-bold">Education Section</h1>
+    <section className="mx-3">
+      <h1 className="text-xl font-bold underline">Education</h1>
       {education.map((educationObject) => {
         return (
-          <div className="education-container" key={educationObject.id}>
-            <div className="school">{educationObject.school}</div>
-            <div className="degree">{educationObject.degree}</div>
-            <div className="education-dates">
+          <div className="grid grid-cols-2" key={educationObject.id}>
+            <div className="order-1 font-bold">{educationObject.school}</div>
+            <div className="order-3 italic">{educationObject.degree}</div>
+            <div className="order-4 justify-self-end">
               {educationObject.startDate} - {educationObject.endDate}
             </div>
-            <div className="location">{educationObject.location}</div>
+            <div className="order-2 justify-self-end">
+              {educationObject.location}
+            </div>
           </div>
         );
       })}

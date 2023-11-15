@@ -6,68 +6,73 @@ function WorkExperienceForm({ addExperience, experience, deleteExperience }) {
   };
   return (
     <>
-      <div>
+      <div className="order-2">
         <form
-          className="flex flex-col items-center mb-10 ml-10 rounded-lg bg-slate-50"
+          className="flex flex-col items-center p-5 mb-5 rounded-lg bg-slate-50"
           onSubmit={addExperience}>
           <h1 className="text-xl font-bold">Work Experience Form</h1>
           <input
-            className="w-40 mb-1 text-center bg-gray-200 border-2 border-black border-none rounded-full"
+            className="mb-1 text-center bg-gray-200 border-2 border-black border-none rounded-full"
             type="text"
             name="position"
             id="position"
             placeholder="Position"
           />
           <input
-            className="w-40 mb-1 text-center bg-gray-200 border-2 border-black border-none rounded-full"
+            className="mb-1 text-center bg-gray-200 border-2 border-black border-none rounded-full"
             type="text"
             name="company"
             id="company"
             placeholder="Company"
           />
           <input
-            className="w-40 mb-1 text-center bg-gray-200 border-2 border-black border-none rounded-full"
+            className="mb-1 text-center bg-gray-200 border-2 border-black border-none rounded-full"
             type="text"
             name="startDate"
             id="startDate"
             placeholder="Start Date"
           />
           <input
-            className="w-40 mb-1 text-center bg-gray-200 border-2 border-black border-none rounded-full"
+            className="mb-1 text-center bg-gray-200 border-2 border-black border-none rounded-full"
             type="text"
             name="endDate"
             id="endDate"
             placeholder="End Date"
           />
+          <input
+            className="mb-1 text-center bg-gray-200 border-2 border-black border-none rounded-full"
+            type="text"
+            name="location"
+            id="location"
+            placeholder="Location"
+          />
           <textarea
-            className="mb-1 text-center bg-gray-200 border-2 border-black border-none rounded-lg w-80"
+            className="mb-1 text-center bg-gray-200 border-2 border-black border-none rounded-lg"
             name=""
             id=""
-            cols="30"
+            cols="20"
             rows="5"
             placeholder="Description"></textarea>
-          <button
-            className="w-40 p-1 mt-3 bg-gray-300 rounded-full"
-            type="submit">
+          <button className="p-1 mt-3 bg-gray-300 rounded-full" type="submit">
             Add Experience
           </button>
         </form>
       </div>
 
-      <div className="flex flex-col items-center mr-10 rounded-lg bg-slate-50">
+      <div className="flex flex-col items-center order-3 p-5 mb-5 rounded-lg bg-slate-50 h-max">
         <h1 className="text-xl font-bold">Work Experience</h1>
         {hasExperience()}
 
         {experience.map((experienceObject) => {
           return (
             <div
-              className="grid grid-cols-2 place-items-center gap-x-4"
+              className="grid grid-cols-2 mb-5 place-items-center gap-x-4"
               key={experienceObject.id}>
               <div className="col-span-2">
                 {experienceObject.company} - {experienceObject.position}
               </div>
               <button
-                className="w-20 p-1 mt-3 bg-gray-300 rounded-full"
+                className="p-1 px-2 mt-3 bg-gray-300 rounded-full"
                 onClick={(e) => {
                   e.currentTarget.parentNode.nextSibling[0].value =
                     experienceObject.position;
@@ -84,7 +89,7 @@ function WorkExperienceForm({ addExperience, experience, deleteExperience }) {
                 Edit
               </button>
               <button
-                className="w-20 p-1 mt-3 bg-gray-300 rounded-full"
+                className="p-1 px-2 mt-3 bg-gray-300 rounded-full"
                 onClick={() => deleteExperience(experienceObject.id)}>
                 Delete
               </button>

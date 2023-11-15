@@ -1,10 +1,10 @@
 function PersonalDetailsSection({ fullName, email, phoneNumber, address }) {
   return (
-    <section className="grid w-full grid-cols-3 text-white bg-cyan-800 place-items-center h-1/6">
+    <section className="grid grid-cols-3 text-white place-items-center bg-cyan-800 h-1/6">
       <div className="col-span-3 text-4xl">{fullName}</div>
-      <div className="email">{email}</div>
-      <div className="phoneNumber">{phoneNumber}</div>
-      <div className="address">{address}</div>
+      <div className="">{email}</div>
+      <div className="">{phoneNumber}</div>
+      <div className="">{address}</div>
     </section>
   );
 }
