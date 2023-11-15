@@ -1,36 +1,38 @@
 function PersonalDetailsForm({ fullName, email, phoneNumber, address }) {
   return (
-    <form className="flex flex-col mb-10">
-      <h1 className="text-xl font-bold">Personal Details Form</h1>
-      <label htmlFor="fullName">Full Name</label>
-      <input
-        className="w-40 border-2 border-black border-solid rounded-md"
-        type="text"
-        id="fullName"
-        onChange={fullName}
-      />
-      <label htmlFor="email">E-Mail</label>
-      <input
-        className="w-40 border-2 border-black border-solid rounded-md"
-        type="email"
-        id="email"
-        onChange={email}
-      />
-      <label htmlFor="phoneNumber">Phone Number</label>
-      <input
-        className="w-40 border-2 border-black border-solid rounded-md"
-        type="text"
-        id="phoneNumber"
-        onChange={phoneNumber}
-      />
-      <label htmlFor="address">Address</label>
-      <input
-        className="w-40 border-2 border-black border-solid rounded-md"
-        type="text"
-        id="address"
-        onChange={address}
-      />
-    </form>
+    <div className="flex justify-center col-span-2">
+      <form className="flex flex-col items-center justify-center w-1/2 mt-5 mb-10 rounded-lg bg-slate-50">
+        <h1 className="text-xl font-bold">Personal Details Form</h1>
+        <input
+          className="mb-1 text-center bg-gray-200 border-2 border-black border-none rounded-full w-80"
+          type="text"
+          id="fullName"
+          placeholder="Full Name"
+          onChange={fullName}
+        />
+        <input
+          className="mb-1 text-center bg-gray-200 border-2 border-black border-none rounded-full w-80"
+          type="email"
+          id="email"
+          placeholder="E-Mail"
+          onChange={email}
+        />
+        <input
+          className="mb-1 text-center bg-gray-200 border-2 border-black border-none rounded-full w-80"
+          type="text"
+          id="phoneNumber"
+          placeholder="Phone Number"
+          onChange={phoneNumber}
+        />
+        <input
+          className="mb-1 text-center bg-gray-200 border-2 border-black border-none rounded-full w-80"
+          type="text"
+          id="address"
+          placeholder="Address"
+          onChange={address}
+        />
+      </form>
+    </div>
   );
 }
 

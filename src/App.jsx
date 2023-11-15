@@ -2,7 +2,7 @@ import { useState } from "react";
 import { v4 as uuidv4 } from "uuid";
 import PersonalDetailsForm from "./components/PersonalDetailsForm";
 import PersonalDetailsSection from "./components/PersonalDetailsSection";
-import ExperienceForm from "./components/ExperienceForm";
+import WorkExperienceForm from "./components/ExperienceForm";
 import ExperienceSection from "./components/ExperienceSection";
 import EducationForm from "./components/EducationForm";
 import EducationSection from "./components/EducationSection";
@@ -83,15 +83,15 @@ function App() {
   };
 
   return (
-    <div className="flex flex-row">
-      <div className="w-1/2">
+    <div className="flex flex-row h-screen bg-gray-200">
+      <div className="grid w-1/2 grid-cols-2 gap-x-5 gap-y-5 grid-rows 3">
         <PersonalDetailsForm
           fullName={onChangeFullName}
           email={onChangeEmail}
           phoneNumber={onChangePhoneNumber}
           address={onChangeAddress}
         />
-        <ExperienceForm
+        <WorkExperienceForm
           experience={experience}
           addExperience={addExperience}
           deleteExperience={deleteExperience}
@@ -103,16 +103,17 @@ function App() {
         />
       </div>
 
-      <div className="w-1/2">
-        <PersonalDetailsSection
-          fullName={fullName}
-          email={email}
-          phoneNumber={phoneNumber}
-          address={address}
-        />
-        <ExperienceSection experience={experience} />
-
-        <EducationSection education={education} />
+      <div className="flex flex-col items-center justify-center w-1/2 align-center">
+        <div className="w-3/4 shadow-2xl h-3/4 bg-slate-50">
+          <PersonalDetailsSection
+            fullName={fullName}
+            email={email}
+            phoneNumber={phoneNumber}
+            address={address}
+          />
+          <ExperienceSection experience={experience} />
+          <EducationSection education={education} />
+        </div>
       </div>
     </div>
   );
