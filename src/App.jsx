@@ -85,7 +85,7 @@ function App() {
   };
 
   return (
-    <div className="flex flex-row bg-gray-200 max-w-screen">
+    <div className="flex flex-row min-h-screen bg-gray-200 max-w-screen">
       <div className="flex flex-col items-center px-5 bg-cyan-800">
         <PersonalDetailsForm
           fullName={onChangeFullName}
