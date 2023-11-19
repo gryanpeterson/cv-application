@@ -59,26 +59,12 @@ function EducationForm({ addEducation, deleteEducation, education }) {
         {education.map((educationObject) => {
           return (
             <div
-              className="grid grid-cols-2 place-items-center gap-x-4"
+              className="grid grid-cols-3 place-items-center"
               key={educationObject.id}>
-              <div className="col-span-2">
+              <div className="">
                 {educationObject.school} - {educationObject.degree}
               </div>
-              <button
-                className="p-1 mt-3 bg-gray-300 rounded-full"
-                onClick={(e) => {
-                  e.currentTarget.parentNode.nextSibling[0].value =
-                    educationObject.school;
-                  e.currentTarget.parentNode.nextSibling[1].value =
-                    educationObject.degree;
-                  e.currentTarget.parentNode.nextSibling[2].value =
-                    educationObject.startDate;
-                  e.currentTarget.parentNode.nextSibling[3].value =
-                    educationObject.endDate;
-                  e.currentTarget.parentNode.nextSibling[4].value =
-                    educationObject.location;
-                  deleteEducation(educationObject.id);
-                }}>
+              <button className="p-1 mt-3 bg-gray-300 rounded-full">
                 Edit
               </button>
               <button
