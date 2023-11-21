@@ -6,6 +6,8 @@ import WorkExperienceForm from "./components/ExperienceForm";
 import ExperienceSection from "./components/ExperienceSection";
 import EducationForm from "./components/EducationForm";
 import EducationSection from "./components/EducationSection";
+import SubmittedExperience from "./components/SubmittedExperience";
+import SubmittedEducation from "./components/SubmittedEducation";
 
 function App() {
   const [fullName, setFullName] = useState("");
@@ -14,6 +16,7 @@ function App() {
   const [address, setAddress] = useState("");
   const [experience, setExperience] = useState([]);
   const [education, setEducation] = useState([]);
+  const [isEditing, setIsEditing] = useState(false);
 
   const onChangeFullName = (e) => {
     setFullName(e.target.value);
@@ -37,32 +40,42 @@ function App() {
     }
   };
 
-  const addExperience = (e) => {
-    e.preventDefault();
-    const id = uuidv4();
-    const position = e.target[0].value;
-    const company = e.target[1].value;
-    const startDate = e.target[2].value;
-    const endDate = e.target[3].value;
-    const location = e.target[4].value;
-    const description = e.target[5].value;
-    const newExperience = {
-      id,
-      position,
-      company,
-      startDate,
-      endDate,
-      location,
-      description,
-    };
-    setExperience([...experience, newExperience]);
-    clearForm(e);
+  const handleEditToggle = () => {
+    if (isEditing === false) {
+      setIsEditing(true);
+    } else {
+      setIsEditing(false);
+    }
+  };
+
+  const saveExperience = (e) => {
+    if (isEditing === false) {
+      e.preventDefault();
+      const id = uuidv4();
+      const position = e.target[1].value;
+      const company = e.target[2].value;
+      const startDate = e.target[3].value;
+      const endDate = e.target[4].value;
+      const location = e.target[5].value;
+      const description = e.target[6].value;
+      const newExperience = {
+        id,
+        position,
+        company,
+        startDate,
+        endDate,
+        location,
+        description,
+      };
+      setExperience([...experience, newExperience]);
+      clearForm(e);
+    }
   };
 
   const deleteExperience = (id) => {
-    setExperience((currentExperience) => {
-      return currentExperience.filter((exp) => exp.id !== id);
-    });
+    setExperience((currentExperience) =>
+      currentExperience.filter((exp) => exp.id !== id)
+    );
   };
 
   const addEducation = (e) => {
@@ -94,13 +107,21 @@ function App() {
           address={onChangeAddress}
         />
         <WorkExperienceForm
+          saveExperience={saveExperience}
+          isEditing={isEditing}
+        />
+        <SubmittedExperience
           experience={experience}
-          addExperience={addExperience}
           deleteExperience={deleteExperience}
+          handleEditToggle={handleEditToggle}
         />
         <EducationForm
           education={education}
           addEducation={addEducation}
+          deleteEducation={deleteEducation}
+        />
+        <SubmittedEducation
+          education={education}
           deleteEducation={deleteEducation}
         />
       </div>
