@@ -1,7 +1,8 @@
 function SubmittedExperience({
   experience,
   deleteExperience,
-  handleEditToggle,
+  expFormRef,
+  fillExperienceForm,
 }) {
   if (experience.length != 0) {
     return (
@@ -18,7 +19,7 @@ function SubmittedExperience({
               </div>
               <button
                 className="p-1 px-2 mt-3 bg-gray-300 rounded-full"
-                onClick={handleEditToggle}>
+                onClick={() => fillExperienceForm(expFormRef.current)}>
                 Edit
               </button>
               <button

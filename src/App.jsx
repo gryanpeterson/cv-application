@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { v4 as uuidv4 } from "uuid";
 import PersonalDetailsForm from "./components/PersonalDetailsForm";
 import PersonalDetailsSection from "./components/PersonalDetailsSection";
@@ -10,6 +10,14 @@ import SubmittedExperience from "./components/SubmittedExperience";
 import SubmittedEducation from "./components/SubmittedEducation";
 
 function App() {
+  const [expFormData, setExpFormData] = useState({
+    position: "",
+    company: "",
+    startDate: "",
+    endDate: "",
+    location: "",
+    description: "",
+  });
   const [fullName, setFullName] = useState("");
   const [email, setEmail] = useState("");
   const [phoneNumber, setPhoneNumber] = useState("");
@@ -17,6 +25,30 @@ function App() {
   const [experience, setExperience] = useState([]);
   const [education, setEducation] = useState([]);
   const [isEditing, setIsEditing] = useState(false);
+
+  const onChangePositionExp = (e) => {
+    setExpFormData({ ...expFormData, position: e.target.value });
+  };
+
+  const onChangeCompanyExp = (e) => {
+    setExpFormData({ ...expFormData, company: e.target.value });
+  };
+
+  const onChangeStartDateExp = (e) => {
+    setExpFormData({ ...expFormData, startDate: e.target.value });
+  };
+
+  const onChangeEndDateExp = (e) => {
+    setExpFormData({ ...expFormData, endDate: e.target.value });
+  };
+
+  const onChangeLocationExp = (e) => {
+    setExpFormData({ ...expFormData, location: e.target.value });
+  };
+
+  const onChangeDescriptionExp = (e) => {
+    setExpFormData({ ...expFormData, description: e.target.value });
+  };
 
   const onChangeFullName = (e) => {
     setFullName(e.target.value);
@@ -107,13 +139,19 @@ function App() {
           address={onChangeAddress}
         />
         <WorkExperienceForm
+          expFormData={expFormData}
+          onChangePositionExp={onChangePositionExp}
+          onChangeCompanyExp={onChangeCompanyExp}
+          onChangeStartDateExp={onChangeStartDateExp}
+          onChangeEndDateExp={onChangeEndDateExp}
+          onChangeLocationExp={onChangeLocationExp}
+          onChangeDescriptionExp={onChangeDescriptionExp}
           saveExperience={saveExperience}
           isEditing={isEditing}
         />
         <SubmittedExperience
           experience={experience}
           deleteExperience={deleteExperience}
-          handleEditToggle={handleEditToggle}
         />
         <EducationForm
           education={education}
