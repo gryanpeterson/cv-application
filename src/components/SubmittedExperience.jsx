@@ -1,9 +1,4 @@
-function SubmittedExperience({
-  experience,
-  deleteExperience,
-  expFormRef,
-  fillExperienceForm,
-}) {
+function SubmittedExperience({ experience, deleteExperience, fillExpForm }) {
   if (experience.length != 0) {
     return (
       <div className="flex flex-col items-center order-3 p-5 mb-5 rounded-lg bg-slate-50 h-max">
@@ -19,7 +14,9 @@ function SubmittedExperience({
               </div>
               <button
                 className="p-1 px-2 mt-3 bg-gray-300 rounded-full"
-                onClick={() => fillExperienceForm(expFormRef.current)}>
+                onClick={() => {
+                  fillExpForm(experienceObject.id);
+                }}>
                 Edit
               </button>
               <button

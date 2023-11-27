@@ -100,12 +100,6 @@ function App() {
     setAddress(e.target.value);
   };
 
-  const clearForm = (e) => {
-    for (let i = 0; i < e.target.length; i++) {
-      e.target[i].value = "";
-    }
-  };
-
   const handleEditToggle = () => {
     if (isEditing === false) {
       setIsEditing(true);
@@ -114,28 +108,40 @@ function App() {
     }
   };
 
+  const fillExpForm = (id) => {
+    experience.forEach((exp) => {
+      if (exp.id === id) {
+        setExpFormData({
+          position: exp.position,
+          company: exp.company,
+          startDate: exp.startDate,
+          endDate: exp.endDate,
+          location: exp.location,
+          description: exp.description,
+        });
+      }
+    });
+  };
+
   const saveExperience = (e) => {
-    if (isEditing === false) {
-      e.preventDefault();
-      const id = uuidv4();
-      const position = e.target[1].value;
-      const company = e.target[2].value;
-      const startDate = e.target[3].value;
-      const endDate = e.target[4].value;
-      const location = e.target[5].value;
-      const description = e.target[6].value;
-      const newExperience = {
-        id,
-        position,
-        company,
-        startDate,
-        endDate,
-        location,
-        description,
-      };
-      setExperience([...experience, newExperience]);
-      clearForm(e);
-    }
+    e.preventDefault();
+    const id = uuidv4();
+    const position = e.target[1].value;
+    const company = e.target[2].value;
+    const startDate = e.target[3].value;
+    const endDate = e.target[4].value;
+    const location = e.target[5].value;
+    const description = e.target[6].value;
+    const newExperience = {
+      id,
+      position,
+      company,
+      startDate,
+      endDate,
+      location,
+      description,
+    };
+    setExperience([...experience, newExperience]);
   };
 
   const deleteExperience = (id) => {
@@ -186,6 +192,7 @@ function App() {
         <SubmittedExperience
           experience={experience}
           deleteExperience={deleteExperience}
+          fillExpForm={fillExpForm}
         />
         <EducationForm
           eduFormData={eduFormData}
