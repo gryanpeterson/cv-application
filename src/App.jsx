@@ -18,6 +18,14 @@ function App() {
     location: "",
     description: "",
   });
+
+  const [eduFormData, setEduFormData] = useState({
+    school: "",
+    degree: "",
+    startDate: "",
+    endDate: "",
+    location: "",
+  });
   const [fullName, setFullName] = useState("");
   const [email, setEmail] = useState("");
   const [phoneNumber, setPhoneNumber] = useState("");
@@ -25,6 +33,8 @@ function App() {
   const [experience, setExperience] = useState([]);
   const [education, setEducation] = useState([]);
   const [isEditing, setIsEditing] = useState(false);
+
+  // Experience Form onChange functions
 
   const onChangePositionExp = (e) => {
     setExpFormData({ ...expFormData, position: e.target.value });
@@ -49,6 +59,30 @@ function App() {
   const onChangeDescriptionExp = (e) => {
     setExpFormData({ ...expFormData, description: e.target.value });
   };
+
+  // Education Form onChange functions
+
+  const onChangeSchoolEdu = (e) => {
+    setEduFormData({ ...eduFormData, school: e.target.value });
+  };
+
+  const onChangeDegreeEdu = (e) => {
+    setEduFormData({ ...eduFormData, degree: e.target.value });
+  };
+
+  const onChangeStartDateEdu = (e) => {
+    setEduFormData({ ...eduFormData, startDate: e.target.value });
+  };
+
+  const onChangeEndDateEdu = (e) => {
+    setEduFormData({ ...eduFormData, endDate: e.target.value });
+  };
+
+  const onChangeLocationEdu = (e) => {
+    setEduFormData({ ...eduFormData, location: e.target.value });
+  };
+
+  // Personal Details Form onChange functions
 
   const onChangeFullName = (e) => {
     setFullName(e.target.value);
@@ -154,9 +188,13 @@ function App() {
           deleteExperience={deleteExperience}
         />
         <EducationForm
-          education={education}
+          eduFormData={eduFormData}
+          onChangeSchoolEdu={onChangeSchoolEdu}
+          onChangeDegreeEdu={onChangeDegreeEdu}
+          onChangeStartDateEdu={onChangeStartDateEdu}
+          onChangeEndDateEdu={onChangeEndDateEdu}
+          onChangeLocationEdu={onChangeLocationEdu}
           addEducation={addEducation}
-          deleteEducation={deleteEducation}
         />
         <SubmittedEducation
           education={education}

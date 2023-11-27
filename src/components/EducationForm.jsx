@@ -1,4 +1,12 @@
-function EducationForm({ addEducation, deleteEducation, education }) {
+function EducationForm({
+  addEducation,
+  eduFormData,
+  onChangeSchoolEdu,
+  onChangeDegreeEdu,
+  onChangeStartDateEdu,
+  onChangeEndDateEdu,
+  onChangeLocationEdu,
+}) {
   return (
     <>
       <div className="order-4">
@@ -12,6 +20,8 @@ function EducationForm({ addEducation, deleteEducation, education }) {
             name="school"
             id="school"
             placeholder="School Name"
+            value={eduFormData.school}
+            onChange={onChangeSchoolEdu}
           />
           <input
             className="mb-1 text-center bg-gray-200 border-2 border-black border-none rounded-full"
@@ -19,6 +29,8 @@ function EducationForm({ addEducation, deleteEducation, education }) {
             name="degree"
             id="degree"
             placeholder="Degree Name"
+            value={eduFormData.degree}
+            onChange={onChangeDegreeEdu}
           />
           <input
             className="mb-1 text-center bg-gray-200 border-2 border-black border-none rounded-full"
@@ -26,6 +38,8 @@ function EducationForm({ addEducation, deleteEducation, education }) {
             name="start-date"
             id="start-date"
             placeholder="Start Date"
+            value={eduFormData.startDate}
+            onChange={onChangeStartDateEdu}
           />
           <input
             className="mb-1 text-center bg-gray-200 border-2 border-black border-none rounded-full"
@@ -33,6 +47,8 @@ function EducationForm({ addEducation, deleteEducation, education }) {
             name="end-date"
             id="end-date"
             placeholder="End Date"
+            value={eduFormData.endDate}
+            onChange={onChangeEndDateEdu}
           />
           <input
             className="mb-1 text-center bg-gray-200 border-2 border-black border-none rounded-full"
@@ -40,6 +56,8 @@ function EducationForm({ addEducation, deleteEducation, education }) {
             name="location"
             id="location"
             placeholder="Location"
+            value={eduFormData.location}
+            onChange={onChangeLocationEdu}
           />
           <button className="p-1 mt-3 bg-gray-300 rounded-full" type="submit">
             Add Education
