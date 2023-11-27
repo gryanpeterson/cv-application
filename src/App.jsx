@@ -123,6 +123,17 @@ function App() {
     });
   };
 
+  const clearExpForm = () => {
+    setExpFormData({
+      position: "",
+      company: "",
+      startDate: "",
+      endDate: "",
+      location: "",
+      description: "",
+    });
+  };
+
   const saveExperience = (e) => {
     e.preventDefault();
     const id = uuidv4();
@@ -142,6 +153,7 @@ function App() {
       description,
     };
     setExperience([...experience, newExperience]);
+    clearExpForm();
   };
 
   const deleteExperience = (id) => {
