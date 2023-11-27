@@ -137,12 +137,12 @@ function App() {
   const saveExperience = (e) => {
     e.preventDefault();
     const id = uuidv4();
-    const position = e.target[1].value;
-    const company = e.target[2].value;
-    const startDate = e.target[3].value;
-    const endDate = e.target[4].value;
-    const location = e.target[5].value;
-    const description = e.target[6].value;
+    const position = expFormData.position;
+    const company = expFormData.company;
+    const startDate = expFormData.startDate;
+    const endDate = expFormData.endDate;
+    const location = expFormData.location;
+    const description = expFormData.description;
     const newExperience = {
       id,
       position,
