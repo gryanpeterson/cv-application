@@ -196,6 +196,8 @@ function App() {
           endDate: edu.endDate,
           location: edu.location,
         });
+        setEditID(id);
+        setIsEditing(true);
       }
     });
   };
@@ -220,6 +222,26 @@ function App() {
     const location = eduFormData.location;
     const newEducation = { id, school, degree, startDate, endDate, location };
     setEducation([...education, newEducation]);
+    clearEduForm();
+  };
+
+  const editEducation = (e, id) => {
+    e.preventDefault();
+    const updatedEducation = education.map((obj) => {
+      if (obj.id === id) {
+        return {
+          school: eduFormData.school,
+          degree: eduFormData.degree,
+          startDate: eduFormData.startDate,
+          endDate: eduFormData.endDate,
+          location: eduFormData.location,
+        };
+      } else {
+        return obj;
+      }
+    });
+    setEducation(updatedEducation);
+    setIsEditing(false);
     clearEduForm();
   };
 
@@ -257,7 +279,10 @@ function App() {
           fillExpForm={fillExpForm}
         />
         <EducationForm
+          isEditing={isEditing}
+          editID={editID}
           eduFormData={eduFormData}
+          editEducation={editEducation}
           onChangeSchoolEdu={onChangeSchoolEdu}
           onChangeDegreeEdu={onChangeDegreeEdu}
           onChangeStartDateEdu={onChangeStartDateEdu}
