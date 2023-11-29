@@ -1,4 +1,4 @@
-import { useRef, useState } from "react";
+import { useState } from "react";
 import { v4 as uuidv4 } from "uuid";
 import PersonalDetailsForm from "./components/PersonalDetailsForm";
 import PersonalDetailsSection from "./components/PersonalDetailsSection";
@@ -33,6 +33,7 @@ function App() {
   const [experience, setExperience] = useState([]);
   const [education, setEducation] = useState([]);
   const [isEditing, setIsEditing] = useState(false);
+  const [editID, setEditID] = useState(null);
 
   // Experience Form onChange functions
 
@@ -119,6 +120,8 @@ function App() {
           location: exp.location,
           description: exp.description,
         });
+        setEditID(id);
+        setIsEditing(true);
       }
     });
   };
@@ -134,7 +137,7 @@ function App() {
     });
   };
 
-  const saveExperience = (e) => {
+  const addExperience = (e) => {
     e.preventDefault();
     const id = uuidv4();
     const position = expFormData.position;
@@ -156,23 +159,68 @@ function App() {
     clearExpForm();
   };
 
+  const editExperience = (e, id) => {
+    e.preventDefault();
+    const updatedExperience = experience.map((obj) => {
+      if (obj.id === id) {
+        return {
+          position: expFormData.position,
+          company: expFormData.company,
+          startDate: expFormData.startDate,
+          endDate: expFormData.endDate,
+          location: expFormData.location,
+          description: expFormData.description,
+        };
+      } else {
+        return obj;
+      }
+    });
+    setExperience(updatedExperience);
+    setIsEditing(false);
+    clearExpForm();
+  };
+
   const deleteExperience = (id) => {
     setExperience((currentExperience) =>
       currentExperience.filter((exp) => exp.id !== id)
     );
   };
 
+  const fillEduForm = (id) => {
+    education.forEach((edu) => {
+      if (edu.id === id) {
+        setEduFormData({
+          school: edu.school,
+          degree: edu.degree,
+          startDate: edu.startDate,
+          endDate: edu.endDate,
+          location: edu.location,
+        });
+      }
+    });
+  };
+
+  const clearEduForm = () => {
+    setEduFormData({
+      school: "",
+      degree: "",
+      startDate: "",
+      endDate: "",
+      location: "",
+    });
+  };
+
   const addEducation = (e) => {
     e.preventDefault();
     const id = uuidv4();
-    const school = e.target[0].value;
-    const degree = e.target[1].value;
-    const startDate = e.target[2].value;
-    const endDate = e.target[3].value;
-    const location = e.target[4].value;
+    const school = eduFormData.school;
+    const degree = eduFormData.degree;
+    const startDate = eduFormData.startDate;
+    const endDate = eduFormData.endDate;
+    const location = eduFormData.location;
     const newEducation = { id, school, degree, startDate, endDate, location };
     setEducation([...education, newEducation]);
-    clearForm(e);
+    clearEduForm();
   };
 
   const deleteEducation = (id) => {
@@ -198,7 +246,9 @@ function App() {
           onChangeEndDateExp={onChangeEndDateExp}
           onChangeLocationExp={onChangeLocationExp}
           onChangeDescriptionExp={onChangeDescriptionExp}
-          saveExperience={saveExperience}
+          addExperience={addExperience}
+          editExperience={editExperience}
+          editID={editID}
           isEditing={isEditing}
         />
         <SubmittedExperience
@@ -218,6 +268,7 @@ function App() {
         <SubmittedEducation
           education={education}
           deleteEducation={deleteEducation}
+          fillEduForm={fillEduForm}
         />
       </div>
 

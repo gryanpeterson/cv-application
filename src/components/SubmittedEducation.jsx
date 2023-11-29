@@ -1,4 +1,4 @@
-function SubmittedEducation({ deleteEducation, education }) {
+function SubmittedEducation({ deleteEducation, education, fillEduForm }) {
   if (education.length != 0) {
     return (
       <div className="flex flex-col items-center order-5 p-5 rounded-lg bg-slate-50 h-max">
@@ -12,7 +12,11 @@ function SubmittedEducation({ deleteEducation, education }) {
               <div className="">
                 {educationObject.school} - {educationObject.degree}
               </div>
-              <button className="p-1 mt-3 bg-gray-300 rounded-full">
+              <button
+                className="p-1 mt-3 bg-gray-300 rounded-full"
+                onClick={() => {
+                  fillEduForm(educationObject.id);
+                }}>
                 Edit
               </button>
               <button
