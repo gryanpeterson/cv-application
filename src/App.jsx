@@ -164,6 +164,7 @@ function App() {
     const updatedExperience = experience.map((obj) => {
       if (obj.id === id) {
         return {
+          id: obj.id,
           position: expFormData.position,
           company: expFormData.company,
           startDate: expFormData.startDate,
@@ -230,6 +231,7 @@ function App() {
     const updatedEducation = education.map((obj) => {
       if (obj.id === id) {
         return {
+          id: obj.id,
           school: eduFormData.school,
           degree: eduFormData.degree,
           startDate: eduFormData.startDate,
