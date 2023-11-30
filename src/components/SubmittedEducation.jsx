@@ -1,7 +1,7 @@
 function SubmittedEducation({ deleteEducation, education, fillEduForm }) {
   if (education.length != 0) {
     return (
-      <div className="flex flex-col items-center order-5 p-5 rounded-lg bg-slate-50 h-max">
+      <div className="flex flex-col items-center order-5 max-w-md p-5 rounded-lg bg-slate-50 h-max">
         <h1 className="text-xl font-bold">Education</h1>
 
         {education.map((educationObject) => {
@@ -9,7 +9,7 @@ function SubmittedEducation({ deleteEducation, education, fillEduForm }) {
             <div
               className="grid grid-cols-3 place-items-center"
               key={educationObject.id}>
-              <div className="">
+              <div className="text-xs">
                 {educationObject.school} - {educationObject.degree}
               </div>
               <button

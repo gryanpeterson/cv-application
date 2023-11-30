@@ -9,7 +9,7 @@ function SubmittedExperience({ experience, deleteExperience, fillExpForm }) {
             <div
               className="grid grid-cols-3 mb-5 place-items-center gap-x-4"
               key={experienceObject.id}>
-              <div className="">
+              <div className="text-xs">
                 {experienceObject.company} - {experienceObject.position}
               </div>
               <button
